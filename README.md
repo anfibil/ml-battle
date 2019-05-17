@@ -1,3 +1,4 @@
+﻿![Classification Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
 # Classification Battle
 
 A website that stores the scores of classification tasks from several students.
