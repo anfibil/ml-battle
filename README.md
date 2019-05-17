@@ -1,4 +1,6 @@
-﻿# ![Classification Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
+﻿![Classification Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
+
+# Classification Battle
 
 A website that stores the scores of classification tasks from several students.
 
@@ -8,6 +10,12 @@ To run the project you just need to execute the command below:
 ```
 docker-composer up
 ```
+## Screenshots
+<p align="center">
+  <img alt="Malgo Software Demo" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot1.png">  <br>
+  <img alt="Malgo Software Demo" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot2.png"> 
+</p>
+
 ## How to create datasets
 The datasets need to be placed inside the folder 'datasets' where each one must have 2 files. NAME.x.npy and NAME.y.npy. Please check the file temp/create-dataset.py to learn how to create a new dataset.
 
