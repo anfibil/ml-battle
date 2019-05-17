@@ -8,7 +8,7 @@ Simple web application that allows you to run and track a simple, real-time, kag
 
 To run the project you just need to execute the command below:
 ```
-docker-composer up
+docker-compose up  
 ```
 ## Screenshot
 <p align="center">
