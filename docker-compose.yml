@@ -1,0 +1,20 @@
+version: '2'
+
+networks: 
+  classification-battle-network: 
+    driver: bridge
+    
+services: 
+
+  classification_battle_website: 
+    container_name: classification_battle_website
+    build: 
+      context: ./src
+      dockerfile: Dockerfile
+    networks: 
+      - classification-battle-network
+    ports: 
+      - "80:80"
+    volumes: 
+      - "./src:/var/www"
+      - "./logs:/var/log/apache2"

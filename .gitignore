@@ -1,0 +1,7 @@
+/logs/*
+!/logs/.gitkeep
+
+/src/uploads/*
+!/src/uploads/index.html
+
+#/src/super-secure-database.json
