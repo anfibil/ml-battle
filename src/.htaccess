@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Student Login"
+AuthUserFile /var/www/.htpasswd
+Require valid-user
