@@ -1,18 +1,18 @@
 {
     "data": [
         {
-            "studentName": "Everaldo Aguiar",
+            "studentName": "EVERALDO AGUIAR",
             "date": "2019-05-10 00:10:00",
             "accuracy": 50.5,
             "dataset": "IRIS",
             "ip": "108.23.55.126"
         },
         {
-            "studentName": "Ned Stark",
-            "date": "2019-05-11 20:40:00",
-            "accuracy": 76.5,
+            "studentName": "NED STARK",
             "dataset": "IRIS",
-            "ip": "104.13.54.101"
+            "date": "2019-05-18 01:08:39",
+            "ip": "172.21.0.1",
+            "accuracy": 96
         }
     ]
 }

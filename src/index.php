@@ -17,22 +17,6 @@ if (!file_exists('super-secure-database.json')){
 
 $database = json_decode(file_get_contents('super-secure-database.json'));
 
-$totalSubmissions = 0;
-$totalStudents = 0;
-
-if ( $database && isset($database->data) && count($database->data) > 0){
-    $totalSubmissions = count($database->data);
-
-    $studentsList = [];
-    foreach($database->data as $item){
-        if (isset($item->studentName) && !empty($item->studentName)){
-            $studentsList[] = trim(strtolower($item->studentName));
-        }
-    }
-    array_unique($studentsList);
-    $totalStudents = count($studentsList);
-}
-
 // Handler the new model action
 $alertMesssage = "";
 $alertClass = "alert-success";
@@ -45,7 +29,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
         $alertClass = "alert-warning";
         $alertMesssage = '<i class="fa-fw fa fa-warning"></i><strong>Error!</strong> Please provide your full name.';
     } else {
-        $data['studentName'] = trim(ucwords(strtolower($_POST['studentName'])));
+        $data['studentName'] = trim(strtoupper($_POST['studentName']));
     }
 
     // Check the dataset file
@@ -107,9 +91,30 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
 
                     // Lets save the data into the 'database'
                     if (!$database || !isset($database->data)){
-                        $database = array('data'=> array($data) );
+                        $database = array('data'=> array( (object) $data) );
                     } else {
-                        $database->data[] = $data;
+
+                        // Add the data
+                        $database->data[] = (object) $data;
+
+                        // Filter duplicate students and let only the best score
+                        $scores = [];
+
+                        foreach ($database->data as $item) {
+
+                            $key = strtoupper(trim($item->studentName)).strtoupper($item->dataset); // Unique key (student name and dataset)
+
+                            if (isset($scores[$key])){
+                                if (isset($item->accuracy) && ( !isset($scores[$key]->accuracy) ||  $item->accuracy > $scores[$key]->accuracy  ) ){
+                                    $scores[$key] = $item;
+                                }
+                            } else {
+                                $scores[$key] = $item;
+                            }
+                        }
+
+                        $database->data = array_values($scores);
+
                     }
 
                     file_put_contents('super-secure-database.json', json_encode((object) $database, JSON_PRETTY_PRINT ) );
@@ -127,6 +132,23 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
     }
 
 
+}
+
+// Collect statistics about the database
+$totalSubmissions = 0;
+$totalStudents = 0;
+
+if ( $database && isset($database->data) && count($database->data) > 0){
+    $totalSubmissions = count($database->data);
+
+    $studentsList = [];
+    foreach($database->data as $item){
+        if (isset($item->studentName) && !empty($item->studentName)){
+            $studentsList[] = trim(strtolower($item->studentName));
+        }
+    }
+    $studentsList = array_unique($studentsList);
+    $totalStudents = count($studentsList);
 }
 
 ?><!DOCTYPE html>

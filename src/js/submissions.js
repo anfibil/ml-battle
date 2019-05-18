@@ -53,7 +53,7 @@ jQuery(document).ready(function () {
             }         
         ],
         "pagingType": "full_numbers",
-        "order": [[3, 'desc']],
+        "order": [[2, 'asc'], [3, 'desc'], [1, 'asc']],
         "fnDrawCallback": function (oSettings) {
         }
     });
