@@ -36,6 +36,11 @@ jQuery(document).ready(function () {
                 "searchable": true
             },
             {
+                "data": "modelName",
+                "orderable": true,
+                "searchable": true
+            },
+            {
                 "data": "accuracy",
                 "orderable": true,
                 "render": function (data, type, full, meta) {
@@ -53,7 +58,7 @@ jQuery(document).ready(function () {
             }         
         ],
         "pagingType": "full_numbers",
-        "order": [[2, 'asc'], [3, 'desc'], [1, 'asc']],
+        "order": [[2, 'asc'], [4, 'desc'], [1, 'asc']],
         "fnDrawCallback": function (oSettings) {
         }
     });

@@ -5,14 +5,24 @@
             "date": "2019-05-10 00:10:00",
             "accuracy": 50.5,
             "dataset": "IRIS",
-            "ip": "108.23.55.126"
+            "ip": "108.23.55.126",
+            "modelName": "LogisticRegression"
         },
         {
             "studentName": "NED STARK",
             "dataset": "IRIS",
             "date": "2019-05-18 01:08:39",
             "ip": "172.21.0.1",
-            "accuracy": 96
+            "accuracy": 92,
+            "modelName": "DecisionTree"
+        },
+        {
+            "studentName": "RENAN",
+            "dataset": "IRIS",
+            "date": "2019-05-18 01:41:05",
+            "ip": "172.21.0.1",
+            "accuracy": 96,
+            "modelName": "LogisticRegression"
         }
     ]
 }

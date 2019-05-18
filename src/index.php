@@ -77,6 +77,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
                             $alertMesssage = '<i class="fa-fw fa fa-times"></i><strong>Error!</strong> An error occurred during model execution. Your score wasn\'t saved. Details: '. htmlentities($outputString) ;
                         } else {
                             $data['accuracy'] = (float) $outputObj->accuracy;
+                            $data['modelName'] = $outputObj->modelName;
                         }                        
                     }
                 } else {
@@ -102,7 +103,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
 
                         foreach ($database->data as $item) {
 
-                            $key = strtoupper(trim($item->studentName)).strtoupper($item->dataset); // Unique key (student name and dataset)
+                            $key = strtoupper(trim($item->studentName)).strtoupper($item->dataset).strtoupper($item->modelName); // Unique key (student name and dataset)
 
                             if (isset($scores[$key])){
                                 if (isset($item->accuracy) && ( !isset($scores[$key]->accuracy) ||  $item->accuracy > $scores[$key]->accuracy  ) ){
@@ -272,6 +273,7 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                                                     <th class=""><i class="fa fa-fw fa-user"></i>&nbsp;Student Name</th>
                                                     <th class=""><i class="fa fa-fw fa-calendar"></i>&nbsp;Date</th>
                                                     <th class=""><i  class="fa fa-fw fa-tag"></i>&nbsp;Dataset</th>
+                                                    <th class=""><i  class="fa fa-fw fa-code"></i>&nbsp;Model Name</th>
                                                     <th class=""><i class="fa fa-fw fa-trophy"></i>&nbsp;Accuracy</th>
                                                     <th class=""><i class="fa fa-fw fa-globe"></i>&nbsp;IP Address</th>
                                                 </tr>
