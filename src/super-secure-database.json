@@ -23,6 +23,22 @@
             "ip": "172.21.0.1",
             "accuracy": 96,
             "modelName": "LogisticRegression"
+        },
+        {
+            "studentName": "EVERALDO TEST",
+            "dataset": "HOUSING",
+            "date": "2019-06-09 00:18:17",
+            "ip": "172.18.0.1",
+            "accuracy": 0.70462868997258,
+            "modelName": "LinearRegression"
+        },
+        {
+            "studentName": "EVERALDO TEST 2",
+            "dataset": "HOUSING",
+            "date": "2019-06-09 00:25:00",
+            "ip": "172.18.0.1",
+            "accuracy": 0.7046838066039,
+            "modelName": "LinearRegression"
         }
     ]
 }

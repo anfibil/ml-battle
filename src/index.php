@@ -273,7 +273,7 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                                                     <th class=""><i class="fa fa-fw fa-user"></i>&nbsp;Student Name</th>
                                                     <th class=""><i class="fa fa-fw fa-calendar"></i>&nbsp;Date</th>
                                                     <th class=""><i  class="fa fa-fw fa-tag"></i>&nbsp;Dataset</th>
-                                                    <th class=""><i  class="fa fa-fw fa-code"></i>&nbsp;Model Name</th>
+                                                    <th class=""><i  class="fa fa-fw fa-flask"></i>&nbsp;Model Name</th>
                                                     <th class=""><i class="fa fa-fw fa-trophy"></i>&nbsp;Accuracy</th>
                                                     <th class=""><i class="fa fa-fw fa-globe"></i>&nbsp;IP Address</th>
                                                 </tr>
