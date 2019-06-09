@@ -50,11 +50,16 @@ jQuery(document).ready(function () {
                 "orderable": true,
                 "render": function (data, type, full, meta) {
                     if (data) {
-                        return '<div class="txtcenter"><span class="scorenumber" style="color:' + hsl_col_perc(data, 0, 120) + '">' + data.toFixed(4) + '%</span></div>';
+                        return '<div class="txtcenter"><span class="scorenumber" style="color:' + hsl_col_perc(data, 0, 120) + '">' + data.toFixed(4) + '</span></div>';
                     } else {
                         return '<div class="txtcenter">Not Available</div>';
                     }
                 }
+            },
+            {
+                "data": "metric",
+                "orderable": true,
+                "searchable": true
             }
         ],
         "pagingType": "full_numbers",
@@ -70,12 +75,6 @@ jQuery(document).ready(function () {
 
 });
 
-function ucfirst(str) {
-    str += '';
-    var f = str.charAt(0).toUpperCase();
-    return f + str.substr(1);
-}
-
 /*
  * Based in a percentage, create a custom color gradient
  * Change the start and end values to reflect the hue map
@@ -90,7 +89,7 @@ function ucfirst(str) {
  */
 function hsl_col_perc(percent, start, end) {
 
-    var a = percent / 100;
+    var a = percent;
     var b = end * a;
     c = b + start;
 

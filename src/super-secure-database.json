@@ -1,4 +1,13 @@
 {
     "data": [
+        {
+            "studentName": "Val Pilar",
+            "dataset": "HOUSING",
+            "date": "2019-06-09 23:42:04",
+            "ip": "172.20.0.1",
+            "accuracy": 0.70462868997258,
+            "modelName": "LinearRegression",
+            "metric": "R-Squared"
+        }
     ]
 }

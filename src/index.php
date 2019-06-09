@@ -6,7 +6,7 @@ require_once "functions.php";
 //Basic global variables
 global $projectname, $pagetitle;
 
-$projectname = "Classification Battle";
+$projectname = "Machine Learning Battle";
 $pagetitle = "Results";
 
 $allSubmissions = array();
@@ -41,7 +41,8 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
             $alertClass = "alert-danger";
             $alertMesssage = '<i class="fa-fw fa fa-times"></i><strong>Error!</strong> The dataset you selected does not exist.';
         } else {
-            $data['dataset'] = $_POST['dataset'];
+            // TODO: This ucwords() doesn't seem to work
+            $data['dataset'] = ucwords($_POST['dataset']);
         }
     }
 
@@ -60,7 +61,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
 
             if (move_uploaded_file($_FILES['model']['tmp_name'], $uploadfile)){
 
-                // This line of code is very insecure! This is a very dumb idea :)
+                // This line of code is very unsafe! This is a very dumb idea :)
                 $cmdLine = "python process-model.py " . escapeshellarg($uploadfile) . ' ' . escapeshellarg($data['dataset'])  ;
                 $outputString = shell_exec($cmdLine);
                 // die($cmdLine); // Just kidding, just a debug line!
@@ -78,6 +79,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
                         } else {
                             $data['accuracy'] = (float) $outputObj->accuracy;
                             $data['modelName'] = $outputObj->modelName;
+                            $data['metric'] = $outputObj->metric;
                         }                        
                     }
                 } else {
@@ -121,7 +123,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
                     file_put_contents('super-secure-database.json', json_encode((object) $database, JSON_PRETTY_PRINT ) );
 
                     $alertClass = "alert-success";
-                    $alertMesssage = '<i class="fa-fw fa fa-times"></i><strong>Success!</strong> The data was saved. Your accuracy score was '. number_format($data['accuracy'], 4, '.', ''). "%." ;
+                    $alertMesssage = '<i class="fa-fw fa fa-times"></i><strong>Success!</strong> The data was saved. Your accuracy score was '. number_format($data['accuracy'], 4, '.', '') ;
 
                 }
 
@@ -199,7 +201,7 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                     <!-- col -->
                     <div class="col-xs-6 col-sm-6 col-md-5 col-lg-5">
                         <h1 class="page-title txt-color-blueDark">
-                            <a href='.' title='<?PHP echo $projectname ?>'><img src="../img/logo.png" alt="<?PHP echo $projectname ?>" width="200" height="40" /></a>
+                            <a href='.' title='<?PHP echo $projectname ?>'><img src="../img/logo.png" alt="<?PHP echo $projectname ?>" width="256" height="40" /></a>
                             <span>
                                 &nbsp;&GT;&nbsp;                                
                                 <span style="text-transform: none; font-weight: 500;"><?PHP echo $pagetitle ?></span>
@@ -273,9 +275,10 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                                                     <th class=""><i class="fa fa-fw fa-user"></i>&nbsp;Student Name</th>
                                                     <th class=""><i class="fa fa-fw fa-calendar"></i>&nbsp;Date</th>
                                                     <th class=""><i class="fa fa-fw fa-globe"></i>&nbsp;IP Address</th>
-                                                    <th class=""><i  class="fa fa-fw fa-tag"></i>&nbsp;Dataset</th>
-                                                    <th class=""><i  class="fa fa-fw fa-flask"></i>&nbsp;Model Name</th>
+                                                    <th class=""><i class="fa fa-fw fa-tag"></i>&nbsp;Dataset</th>
+                                                    <th class=""><i class="fa fa-fw fa-flask"></i>&nbsp;Model Name</th>
                                                     <th class=""><i class="fa fa-fw fa-trophy"></i>&nbsp;Accuracy</th>
+                                                    <th class=""><i class="fa fa-fw fa-line-chart"></i>&nbsp;Metric</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

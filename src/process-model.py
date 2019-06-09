@@ -8,6 +8,7 @@ import traceback
 data = {}
 data['error'] = ''
 data['accuracy'] = 0
+data['metric'] = 'accuracy'
 data['modelName'] = ""
 
 try:
@@ -27,9 +28,10 @@ try:
     # Evaluate regression models using R^2
     if model_type == 'reg':
         data['accuracy'] = r2_score(y_test, y_pred)
+        data['metric'] = 'R-Squared'
     # Evaluate classification models using regular accuracy
     else:
-        data['accuracy'] = float(np.average(y_test == y_pred)) * 100
+        data['accuracy'] = float(np.average(y_test == y_pred))
 
     data['modelName'] = model.__class__.__name__
 
