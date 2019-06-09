@@ -49,14 +49,6 @@
             "modelName": "LinearRegression"
         },
         {
-            "studentName": "Test Lastname",
-            "dataset": "iris",
-            "date": "2019-06-09 00:47:52",
-            "ip": "172.18.0.1",
-            "accuracy": 96,
-            "modelName": "LogisticRegression"
-        },
-        {
             "studentName": "Everaldo Normal",
             "dataset": "housing",
             "date": "2019-06-09 00:51:15",
