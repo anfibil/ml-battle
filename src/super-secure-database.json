@@ -1,43 +1,75 @@
 {
     "data": [
         {
-            "studentName": "EVERALDO AGUIAR",
+            "studentName": "Everaldo Aguiar",
             "date": "2019-05-10 00:10:00",
             "accuracy": 50.5,
-            "dataset": "IRIS",
+            "dataset": "iris",
             "ip": "108.23.55.126",
             "modelName": "LogisticRegression"
         },
         {
-            "studentName": "NED STARK",
-            "dataset": "IRIS",
+            "studentName": "Ned Stark",
+            "dataset": "iris",
             "date": "2019-05-18 01:08:39",
             "ip": "172.21.0.1",
             "accuracy": 92,
             "modelName": "DecisionTree"
         },
         {
-            "studentName": "RENAN",
-            "dataset": "IRIS",
+            "studentName": "Renan",
+            "dataset": "iris",
             "date": "2019-05-18 01:41:05",
             "ip": "172.21.0.1",
             "accuracy": 96,
             "modelName": "LogisticRegression"
         },
         {
-            "studentName": "EVERALDO TEST",
-            "dataset": "HOUSING",
+            "studentName": "Everaldo Test",
+            "dataset": "housing",
             "date": "2019-06-09 00:18:17",
             "ip": "172.18.0.1",
             "accuracy": 0.70462868997258,
             "modelName": "LinearRegression"
         },
         {
-            "studentName": "EVERALDO TEST 2",
-            "dataset": "HOUSING",
+            "studentName": "Everaldo Test 2",
+            "dataset": "housing",
             "date": "2019-06-09 00:25:00",
             "ip": "172.18.0.1",
             "accuracy": 0.7046838066039,
+            "modelName": "LinearRegression"
+        },
+        {
+            "studentName": "Test Lastname",
+            "dataset": "iris",
+            "date": "2019-06-09 00:47:52",
+            "ip": "172.18.0.1",
+            "accuracy": 96,
+            "modelName": "LogisticRegression"
+        },
+        {
+            "studentName": "Everaldo Normal",
+            "dataset": "housing",
+            "date": "2019-06-09 00:51:15",
+            "ip": "172.18.0.1",
+            "accuracy": 0.70462868997258,
+            "modelName": "LinearRegression"
+        },
+        {
+            "studentName": "Renan Gomes",
+            "dataset": "iris",
+            "date": "2019-06-09 00:59:29",
+            "ip": "172.18.0.1",
+            "accuracy": 96,
+            "modelName": "LogisticRegression"
+        },
+        {
+            "studentName": "Guru Lamark",
+            "dataset": "housing",
+            "date": "2019-06-09 01:04:30",
+            "ip": "172.18.0.1",
+            "accuracy": 0.70462868997258,
             "modelName": "LinearRegression"
         }
     ]

@@ -29,7 +29,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
         $alertClass = "alert-warning";
         $alertMesssage = '<i class="fa-fw fa fa-warning"></i><strong>Error!</strong> Please provide your full name.';
     } else {
-        $data['studentName'] = trim(strtoupper($_POST['studentName']));
+        $data['studentName'] = trim(ucwords(strtolower($_POST['studentName'])));
     }
 
     // Check the dataset file
@@ -214,7 +214,7 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                         <!-- sparks -->
                         <ul id="sparks" style="margin-top:20px">
                             <li class="sparks-info">
-                                <button type="button" class="btn"><span class="txt-color-blue" data-toggle="modal" data-target="#submitModal" ><i class="fa fa-plus"></i>&nbsp;Submit Model</span></button>
+                                <button type="button" class="btn"><span class="txt-color-blue" data-toggle="modal" data-target="#submitModel" ><i class="fa fa-plus"></i>&nbsp;Submit Model</span></button>
                             </li>
                             <li class="sparks-info">
                                 <h5> Submissions <span class="txt-color-blue"><i class="fa fa-cubes"></i>&nbsp;<?PHP echo $totalSubmissions ?></span></h5>
@@ -272,10 +272,10 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                                                 <tr>
                                                     <th class=""><i class="fa fa-fw fa-user"></i>&nbsp;Student Name</th>
                                                     <th class=""><i class="fa fa-fw fa-calendar"></i>&nbsp;Date</th>
+                                                    <th class=""><i class="fa fa-fw fa-globe"></i>&nbsp;IP Address</th>
                                                     <th class=""><i  class="fa fa-fw fa-tag"></i>&nbsp;Dataset</th>
                                                     <th class=""><i  class="fa fa-fw fa-flask"></i>&nbsp;Model Name</th>
                                                     <th class=""><i class="fa fa-fw fa-trophy"></i>&nbsp;Accuracy</th>
-                                                    <th class=""><i class="fa fa-fw fa-globe"></i>&nbsp;IP Address</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -322,7 +322,7 @@ if ( $database && isset($database->data) && count($database->data) > 0){
 
         <!-- Modal window -->
 
-        <div class="modal fade" tabindex="-1" role="dialog" id="submitModal">
+        <div class="modal fade" tabindex="-1" role="dialog" id="submitModel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

@@ -31,6 +31,11 @@ jQuery(document).ready(function () {
                 "searchable": true
             },
             {
+                "data": "ip",
+                "orderable": true,
+                "searchable": true
+            },
+            {
                 "data": "dataset",
                 "orderable": true,
                 "searchable": true
@@ -50,15 +55,10 @@ jQuery(document).ready(function () {
                         return '<div class="txtcenter">Not Available</div>';
                     }
                 }
-            },   
-            {
-                "data": "ip",
-                "orderable": true,
-                "searchable": true
-            }         
+            }
         ],
         "pagingType": "full_numbers",
-        "order": [[2, 'asc'], [4, 'desc'], [1, 'asc']],
+        "order": [[3, 'asc'], [5, 'desc'], [1, 'asc']],
         "fnDrawCallback": function (oSettings) {
         }
     });
