@@ -25,6 +25,14 @@
             "modelName": "LogisticRegression"
         },
         {
+            "studentName": "Maria de Baibina",
+            "dataset": "iris",
+            "date": "2019-05-18 01:08:39",
+            "ip": "172.21.0.1",
+            "accuracy": 99.93,
+            "modelName": "RandomForest"
+        },
+        {
             "studentName": "Everaldo Test",
             "dataset": "housing",
             "date": "2019-06-09 00:18:17",
@@ -70,6 +78,14 @@
             "date": "2019-06-09 01:04:30",
             "ip": "172.18.0.1",
             "accuracy": 0.70462868997258,
+            "modelName": "LinearRegression"
+        },
+        {
+            "studentName": "Guru Maxwell",
+            "dataset": "housing",
+            "date": "2019-06-10 01:04:30",
+            "ip": "172.18.0.1",
+            "accuracy": 0.75462868997258,
             "modelName": "LinearRegression"
         }
     ]

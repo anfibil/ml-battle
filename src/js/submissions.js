@@ -63,6 +63,10 @@ jQuery(document).ready(function () {
         }
     });
 
+    setInterval( function () {
+        table.ajax.reload();
+    }, 30000 );
+
 
 });
 
