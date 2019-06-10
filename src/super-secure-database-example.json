@@ -4,13 +4,13 @@
             "studentName": "EVERALDO AGUIAR",
             "date": "2019-05-10 00:10:00",
             "accuracy": 50.5,
-            "dataset": "IRIS",
+            "dataset": "Housing",
             "ip": "108.23.55.126",
             "modelName": "LogisticRegression"
         },
         {
             "studentName": "NED STARK",
-            "dataset": "IRIS",
+            "dataset": "Housing",
             "date": "2019-05-18 01:08:39",
             "ip": "172.21.0.1",
             "accuracy": 92,

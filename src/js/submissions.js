@@ -15,6 +15,7 @@ jQuery(document).ready(function () {
         "iDisplayLength": 50,
         "processing": true,
         "serverSide": false,
+		"autoWidth": true,
         "oLanguage": {
             "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
         },
@@ -28,17 +29,26 @@ jQuery(document).ready(function () {
             {
                 "data": "date",
                 "orderable": true,
-                "searchable": true
+                "searchable": true,
+				"className": " hidden-xs hidden-sm visible-md visible-lg"				
             },
             {
                 "data": "ip",
                 "orderable": true,
-                "searchable": true
+                "searchable": true,
+				"className": " hidden-xs hidden-sm hidden-md visible-lg"
             },
             {
                 "data": "dataset",
                 "orderable": true,
-                "searchable": true
+                "searchable": true,
+				"render": function (data, type, full, meta) {
+                    if (data) {
+                        return '<span style="text-transform: capitalize;">' + data.toLowerCase() + '</span>';
+                    } else {
+                        return 'Not Available';
+                    }
+                }
             },
             {
                 "data": "modelName",
@@ -72,6 +82,16 @@ jQuery(document).ready(function () {
         table.ajax.reload();
     }, 30000 );
 
+
+  var update_size = function() {
+    jQuery('#resultstable').css({ width: jQuery('#resultstable').parent().width() });
+    jQuery('#resultstable').fnAdjustColumnSizing();  
+  }
+
+  jQuery(window).resize(function() {
+    clearTimeout(window.refresh_size);
+    window.refresh_size = setTimeout(function() { update_size(); }, 100);
+  });
 
 });
 

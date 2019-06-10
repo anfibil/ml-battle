@@ -42,7 +42,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
             $alertMesssage = '<i class="fa-fw fa fa-times"></i><strong>Error!</strong> The dataset you selected does not exist.';
         } else {
             // TODO: This ucwords() doesn't seem to work
-            $data['dataset'] = ucwords($_POST['dataset']);
+            $data['dataset'] = $_POST['dataset'];  # If you want to force, use ucwords(strtolower(.. )), I dont recommend do this.
         }
     }
 
@@ -216,7 +216,7 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                         <!-- sparks -->
                         <ul id="sparks" style="margin-top:20px">
                             <li class="sparks-info">
-                                <button type="button" class="btn"><span class="txt-color-blue" data-toggle="modal" data-target="#submitModel" ><i class="fa fa-plus"></i>&nbsp;Submit Model</span></button>
+                                <button type="button" class="btn"><span class="txt-color-blue" data-toggle="modal" data-target="#submitModel" ><i class="fa fa-plus"></i>&nbsp;Submit<span class="hidden-xs hidden-sm txt-color-blue" style="display:inline;"> Model</span></span></button>
                             </li>
                             <li class="sparks-info">
                                 <h5> Submissions <span class="txt-color-blue"><i class="fa fa-cubes"></i>&nbsp;<?PHP echo $totalSubmissions ?></span></h5>
@@ -273,8 +273,8 @@ if ( $database && isset($database->data) && count($database->data) > 0){
                                             <thead>
                                                 <tr>
                                                     <th class=""><i class="fa fa-fw fa-user"></i>&nbsp;Student Name</th>
-                                                    <th class=""><i class="fa fa-fw fa-calendar"></i>&nbsp;Date</th>
-                                                    <th class=""><i class="fa fa-fw fa-globe"></i>&nbsp;IP Address</th>
+                                                    <th class="hidden-xs hidden-sm visible-md visible-lg"><i class="fa fa-fw fa-calendar"></i>&nbsp;Date</th>
+                                                    <th class="hidden-xs hidden-sm hidden-md visible-lg"><i class="fa fa-fw fa-globe"></i>&nbsp;IP Address</th>
                                                     <th class=""><i class="fa fa-fw fa-tag"></i>&nbsp;Dataset</th>
                                                     <th class=""><i class="fa fa-fw fa-flask"></i>&nbsp;Model Name</th>
                                                     <th class=""><i class="fa fa-fw fa-trophy"></i>&nbsp;Accuracy</th>
