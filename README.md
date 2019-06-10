@@ -1,6 +1,6 @@
-﻿![Classification Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
+﻿![Machine Learning Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
 
-# Classification Battle
+# Machine Learning Battle
 
 Simple web application that allows you to run and track a simple, real-time, kaggle-like ML challenge.
 
