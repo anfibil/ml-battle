@@ -91,6 +91,10 @@ body{
 #resultstable td {
     vertical-align: middle;
     padding: 3px 7px!important;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 200px;
 }
 td .forcenopadding{
     padding: 0!important;
