@@ -85,7 +85,7 @@ jQuery(document).ready(function () {
 
   var update_size = function() {
     jQuery('#resultstable').css({ width: jQuery('#resultstable').parent().width() });
-    jQuery('#resultstable').fnAdjustColumnSizing();  
+    //jQuery('#resultstable').fnAdjustColumnSizing();  
   }
 
   jQuery(window).resize(function() {
