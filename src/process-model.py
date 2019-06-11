@@ -1,4 +1,5 @@
 from joblib import load
+from sklearn.base import RegressorMixin
 from sklearn.metrics import r2_score
 import json
 import numpy as np
@@ -23,10 +24,10 @@ try:
     y_pred = model.predict(X_test)
 
     # Checking if model being evaluated is a classifier or regression
-    model_type = 'reg' if model.__class__.__name__ == 'LinearRegression' else 'clf'
+    is_regression = issubclass(type(model), RegressorMixin)
 
     # Evaluate regression models using R^2
-    if model_type == 'reg':
+    if is_regression:
         data['accuracy'] = r2_score(y_test, y_pred)
         data['metric'] = 'R-Squared'
     # Evaluate classification models using regular accuracy
