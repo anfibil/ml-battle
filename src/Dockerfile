@@ -11,8 +11,8 @@ FROM renangbarreto/apache-php5-phantomjs-docker:latest
 MAINTAINER Renan Gomes <email {at} renangomes.com>
 
 # Install useful Python packages using apt-get 
-RUN apt-get update && apt-get install -y --force-yes software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get update && \
-        apt-get install -y python3.6 python3.6-dev wget build-essential libpq-dev libssl-dev openssl libffi-dev zlib1g-dev && \
+RUN apt-get update && apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get update && \
+        apt-get install -y --force-yes python3.6 python3.6-dev wget build-essential libpq-dev libssl-dev openssl libffi-dev zlib1g-dev && \
 		apt-get clean && \
 	    apt-get autoremove && \
 	    rm -rf /var/lib/apt/lists/*
