@@ -11,7 +11,7 @@ FROM renangbarreto/apache-php5-phantomjs-docker:latest
 MAINTAINER Renan Gomes <email {at} renangomes.com>
 
 # Install useful Python packages using apt-get 
-RUN apt-get update && apt-get install -y software-properties-common && add-apt-repository ppa:jonathonf/python-3.6 && apt-get update && \
+RUN apt-get update && apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get update && \
         apt-get install -y python3.6 python3.6-dev wget build-essential libpq-dev libssl-dev openssl libffi-dev zlib1g-dev && \
 		apt-get clean && \
 	    apt-get autoremove && \
