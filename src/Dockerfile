@@ -30,14 +30,12 @@ RUN wget https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz && \
 	rm -Rf Python-3.6.15
 
 # Install pip
-RUN wget https://bootstrap.pypa.io/get-pip.py && \
-	python3.6 get-pip.py && \
-	ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
-	ln -s /usr/bin/python3.6 /usr/local/bin/python
+RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
+	python3.6 get-pip.py 
 
 # Install other useful Python packages using pip
 RUN pip3 install --upgrade scikit-learn joblib numpy
-	
+
 # Create the execution binary for the entrypoint
 RUN echo "#!/bin/sh\n cd /var/www; rm -f /var/run/apache2/apache2.pid; /usr/bin/apache2-foreground" > /run/startup.sh && \
     chmod a+x /run/startup.sh
