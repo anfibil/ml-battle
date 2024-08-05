@@ -1,3 +1,4 @@
+```markdown
 ﻿![Machine Learning Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
 
 # Machine Learning Battle
@@ -34,3 +35,14 @@ To upload the model the student just need to use the "Submit Model" form:
 <p align="center">
   <img alt="Upload Model" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot2.png"> 
 </p>
+
+## Common Errors
+Here are some common errors you might encounter while using the application:
+
+1. **Database Connection Error**: Ensure that the database file 'super-secure-database.json' is correctly formatted and accessible.
+2. **Model Upload Error**: Make sure the model is serialized using joblib and follows the naming convention 'model.joblib'.
+3. **Dataset Format Error**: Verify that your datasets are placed in the correct format (NAME.x.npy and NAME.y.npy) within the 'datasets' folder.
+
+## Note on Code Status
+Please be aware that this code is currently out-of-date. It may not work with the latest versions of dependencies or frameworks. Consider checking for updates or alternatives if you encounter issues.
+```
