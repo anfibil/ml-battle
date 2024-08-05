@@ -1,36 +1,38 @@
-﻿![Machine Learning Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
+```markdown
+![Machine Learning Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
 
-# Machine Learning Battle
+# 機械学習バトル
 
-Simple web application that allows you to run and track a simple, real-time, kaggle-like ML challenge.
+シンプルなウェブアプリケーションで、シンプルでリアルタイムなKaggleのようなMLチャレンジを実行および追跡できます。
 
-## How to run
+## 実行方法
 
-To run the project you just need to execute the command below:
+プロジェクトを実行するには、以下のコマンドを実行するだけです：
 ```
 docker-compose up  
 ```
-## Screenshot
+## スクリーンショット
 <p align="center">
   <img alt="Classification Battle" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot1.png">  <br>
 </p>
 
-## How to create datasets
-The datasets need to be placed inside the folder 'datasets' where each one must have 2 files. NAME.x.npy and NAME.y.npy. Please check the file temp/create-dataset.py to learn how to create a new dataset.
+## データセットの作成方法
+データセットは「datasets」フォルダー内に配置する必要があり、それぞれに2つのファイルが必要です。NAME.x.npyとNAME.y.npy。新しいデータセットを作成する方法については、temp/create-dataset.pyファイルを確認してください。
 
-The uploads folder will be used to store temporarily the models submitted.
+アップロードフォルダーは、提出されたモデルを一時的に保存するために使用されます。
 
-## How to clear the database
-The only way to delete submitted results is by manually editing the "database" file 'super-secure-database.json'. Have fun with that ;)
+## データベースをクリアする方法
+提出された結果を削除する唯一の方法は、「super-secure-database.json」という「データベース」ファイルを手動で編集することです。それを楽しんでください ;)
 
-## How students will upload their models
-Students need to upload the models serialized using the library joblib. please check the file temp/create-model.py to see how the students need to create the models:
+## 学生がモデルをアップロードする方法
+学生は、joblibライブラリを使用してシリアル化されたモデルをアップロードする必要があります。学生がモデルを作成する方法については、temp/create-model.pyファイルを確認してください：
 ```
 from joblib import dump
 dump(clf_lr, 'model.joblib')
 ```
-To upload the model the student just need to use the "Submit Model" form:
+モデルをアップロードするには、学生は「モデルを提出」フォームを使用するだけです：
 
 <p align="center">
   <img alt="Upload Model" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot2.png"> 
 </p>
+```
