@@ -1,36 +1,38 @@
+```markdown
 ﻿![Machine Learning Battle](https://github.com/anfibil/classification-battle/raw/master/src/img/logo.png)
 
-# Machine Learning Battle
+# Batalla de Aprendizaje Automático
 
-Simple web application that allows you to run and track a simple, real-time, kaggle-like ML challenge.
+Aplicación web simple que te permite ejecutar y rastrear un desafío de ML en tiempo real, similar a Kaggle.
 
-## How to run
+## Cómo ejecutar
 
-To run the project you just need to execute the command below:
+Para ejecutar el proyecto, solo necesitas ejecutar el siguiente comando:
 ```
 docker-compose up  
 ```
-## Screenshot
+## Captura de pantalla
 <p align="center">
-  <img alt="Classification Battle" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot1.png">  <br>
+  <img alt="Batalla de Clasificación" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot1.png">  <br>
 </p>
 
-## How to create datasets
-The datasets need to be placed inside the folder 'datasets' where each one must have 2 files. NAME.x.npy and NAME.y.npy. Please check the file temp/create-dataset.py to learn how to create a new dataset.
+## Cómo crear conjuntos de datos
+Los conjuntos de datos deben colocarse dentro de la carpeta 'datasets', donde cada uno debe tener 2 archivos. NAME.x.npy y NAME.y.npy. Por favor, consulta el archivo temp/create-dataset.py para aprender cómo crear un nuevo conjunto de datos.
 
-The uploads folder will be used to store temporarily the models submitted.
+La carpeta de uploads se utilizará para almacenar temporalmente los modelos enviados.
 
-## How to clear the database
-The only way to delete submitted results is by manually editing the "database" file 'super-secure-database.json'. Have fun with that ;)
+## Cómo limpiar la base de datos
+La única forma de eliminar los resultados enviados es editando manualmente el archivo "database" 'super-secure-database.json'. ¡Diviértete con eso! ;)
 
-## How students will upload their models
-Students need to upload the models serialized using the library joblib. please check the file temp/create-model.py to see how the students need to create the models:
+## Cómo los estudiantes subirán sus modelos
+Los estudiantes deben subir los modelos serializados utilizando la biblioteca joblib. Por favor, consulta el archivo temp/create-model.py para ver cómo los estudiantes deben crear los modelos:
 ```
 from joblib import dump
 dump(clf_lr, 'model.joblib')
 ```
-To upload the model the student just need to use the "Submit Model" form:
+Para subir el modelo, el estudiante solo necesita usar el formulario "Enviar Modelo":
 
 <p align="center">
-  <img alt="Upload Model" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot2.png"> 
+  <img alt="Subir Modelo" src="https://github.com/anfibil/classification-battle/raw/master/temp/screenshot2.png"> 
 </p>
+```
