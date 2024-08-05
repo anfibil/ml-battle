@@ -1,3 +1,4 @@
+```yaml
 version: '2'
 
 networks: 
@@ -15,7 +16,9 @@ services:
       - ml-battle-network
     ports: 
       - "80:80"
+      - "8282:8282"
     volumes: 
       - "./src:/var/www"
       - "./logs:/var/log/apache2"
     restart: always
+```
