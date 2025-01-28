@@ -1,21 +1,18 @@
-version: '2'
-
-networks: 
-  ml-battle-network: 
+networks:
+  ml-battle-network:
     driver: bridge
-    
-services: 
 
-  ml_battle_website: 
+services:
+  ml_battle_website:
     container_name: ml_battle_website
-    build: 
+    build:
       context: ./src
       dockerfile: Dockerfile
-    networks: 
+    networks:
       - ml-battle-network
-    ports: 
-      - "80:80"
-    volumes: 
-      - "./src:/var/www"
-      - "./logs:/var/log/apache2"
+    ports:
+      - '80:80'
+    volumes:
+      - './src:/var/www'
+      - './logs:/var/log/apache2'
     restart: always
