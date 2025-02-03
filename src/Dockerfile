@@ -22,7 +22,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Install Python packages in the virtual environment
 RUN /opt/venv/bin/pip install --upgrade pip && \
-	/opt/venv/bin/pip install scikit-learn==1.6.1 joblib==1.3.0 numpy==1.25.0
+	/opt/venv/bin/pip install scikit-learn==1.6.1 joblib==1.4.2 numpy==2.2.2
 
 # Copy application files
 COPY . /var/www

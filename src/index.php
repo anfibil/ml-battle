@@ -62,7 +62,7 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
             if (move_uploaded_file($_FILES['model']['tmp_name'], $uploadfile)){
 
                 // This line of code is very unsafe! This is a very dumb idea :)
-                $cmdLine = "python3.6 process-model.py " . escapeshellarg($uploadfile) . ' ' . escapeshellarg($data['dataset'])  ;
+                $cmdLine = "python3 process-model.py " . escapeshellarg($uploadfile) . ' ' . escapeshellarg($data['dataset'])  ;
                 $outputString = shell_exec($cmdLine);
                 // die($cmdLine); // Just kidding, just a debug line!
                 $outputObj = json_decode(trim($outputString));
