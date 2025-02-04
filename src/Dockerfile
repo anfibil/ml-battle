@@ -24,9 +24,6 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN /opt/venv/bin/pip install --upgrade pip && \
 	/opt/venv/bin/pip install scikit-learn==1.6.1 joblib==1.4.2 numpy==2.2.2
 
-# Copy application files
-COPY . /var/www
-
 # Set permissions for the application
 RUN chown -R www-data:www-data /var/www && \
 	chmod -R 755 /var/www

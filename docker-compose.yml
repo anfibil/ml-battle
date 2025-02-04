@@ -12,4 +12,7 @@ services:
       - ml-battle-network
     ports:
       - '80:80'
+    volumes:
+      - './src:/var/www'
+      - './logs:/var/log/apache2'
     restart: always
