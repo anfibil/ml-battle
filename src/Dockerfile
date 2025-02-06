@@ -6,36 +6,40 @@
 # - https://hub.docker.com/r/renangbarreto/deeplearning-docker/
 ########################################################
 
-FROM renangbarreto/apache-php5-phantomjs-docker:latest
+FROM php:8.2-apache
 
-MAINTAINER Renan Gomes <email {at} renangomes.com>
+# Install required system dependencies
+RUN apt-get update && apt-get install -y \
+	apache2 \
+	python3 python3-pip python3-venv \
+	tesseract-ocr tesseract-ocr-eng \
+	software-properties-common wget build-essential \
+	libpq-dev libssl-dev openssl libffi-dev zlib1g-dev \
+	libonig-dev libxml2-dev \
+	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install useful Python packages using apt-get 
-RUN rm -f /etc/apt/sources.list.d/pgdg.list /etc/apt/sources.list.d/pgdg.list.save
-RUN apt-get update && \
-    apt-get install -y software-properties-common wget build-essential libpq-dev libssl-dev openssl libffi-dev zlib1g-dev && \
-	apt-get install -y --reinstall ca-certificates && \
-	apt-get clean && \
-	apt-get autoremove && \
-	rm -rf /var/lib/apt/lists/*
+# Install PHP extensions
+RUN docker-php-ext-install mbstring xml
 
-# Install python
-RUN wget https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz && \
-	tar -xvf Python-3.6.15.tgz && \
-	cd Python-3.6.15 && \
-	./configure --enable-optimizations && \
-	make -j8 && \
-	make install && \
-	cd .. && \
-	rm -Rf Python-3.6.15
+# Create and activate a virtual environment
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
-# Install pip
-RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
-	python3.6 get-pip.py 
+# Install Python packages in the virtual environment
+RUN /opt/venv/bin/pip install --upgrade pip && \
+	/opt/venv/bin/pip install scikit-learn==1.6.1 joblib==1.4.2 numpy==2.2.2
 
-# Install other useful Python packages using pip
-RUN pip3 install --upgrade scikit-learn joblib numpy
+# Enable shell execution in PHP
+RUN echo "disable_functions =" > /usr/local/etc/php/conf.d/custom.ini
 
-# Create the execution binary for the entrypoint
-RUN echo "#!/bin/sh\n cd /var/www; rm -f /var/run/apache2/apache2.pid; /usr/bin/apache2-foreground" > /run/startup.sh && \
-    chmod a+x /run/startup.sh
+# Set permissions for the application
+RUN chown -R www-data:www-data /var/www && \
+	chmod -R 755 /var/www
+
+# Copy custom Apache configuration
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
+RUN a2ensite 000-default && a2enmod rewrite
+
+# Start Apache in foreground mode
+CMD ["apache2-foreground"]
