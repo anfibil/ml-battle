@@ -13,6 +13,6 @@ services:
     ports:
       - '80:80'
     volumes:
-      - './src:/var/www'
+      - './src:/var/www:rw'
       - './logs:/var/log/apache2'
     restart: always

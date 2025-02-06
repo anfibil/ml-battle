@@ -2,12 +2,13 @@
 
 //Basic includes
 require_once "functions.php";
-
 //Basic global variables
 global $projectname, $pagetitle;
 
 $projectname = "Machine Learning Battle";
 $pagetitle = "Results";
+
+chdir("/var/www");
 
 $allSubmissions = array();
 
@@ -62,10 +63,34 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
             if (move_uploaded_file($_FILES['model']['tmp_name'], $uploadfile)){
 
                 // This line of code is very unsafe! This is a very dumb idea :)
-                $cmdLine = "python3 process-model.py " . escapeshellarg($uploadfile) . ' ' . escapeshellarg($data['dataset'])  ;
-                $outputString = shell_exec($cmdLine);
-                // die($cmdLine); // Just kidding, just a debug line!
-                $outputObj = json_decode(trim($outputString));
+                
+                $cmdLine = "/opt/venv/bin/python3 /var/www/process-model.py " . escapeshellarg($uploadfile) . ' ' . escapeshellarg($data['dataset']);
+                
+                $descriptorspec = array(
+                    0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
+                    1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
+                    2 => array("pipe", "w")   // stderr is a pipe that the child will write to
+                );
+                
+                $process = proc_open($cmdLine, $descriptorspec, $pipes);
+                
+                if (is_resource($process)) {
+                    $outputString = stream_get_contents($pipes[1]); // Get STDOUT
+                    $errorString = stream_get_contents($pipes[2]);  // Get STDERR
+                
+                    fclose($pipes[1]);
+                    fclose($pipes[2]);
+                    
+                    $returnCode = proc_close($process);
+                
+                    // Log outputs for debugging
+                    
+                    // error_log("Process Output: " . trim($outputString));
+                    // error_log("Process Error: " . trim($errorString));
+                    // error_log("Process Exit Code: " . $returnCode);
+                    
+                    $outputObj = json_decode(trim($outputString));
+                }
 
                 $goodExecution = false;
                 if ($outputObj && is_object($outputObj)){
@@ -88,7 +113,8 @@ if (isset($_GET['action']) && strcmp($_GET['action'], 'submitmodel') === 0 ){
                 }
 
                 // Try to delete the file
-                unlink($uploadfile);
+                // debug for now
+                // unlink($uploadfile);
 
                 if (empty($alertMesssage)){
 
